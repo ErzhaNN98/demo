@@ -28,6 +28,5 @@ public class UserResource {
     @PostMapping(value = "/save")
     public void save(@RequestBody final User user) {
         userReposiroty.save(user);
-        return;
     }
 }
