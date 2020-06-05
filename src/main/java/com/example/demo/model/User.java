@@ -20,6 +20,9 @@ public class User {
     @Column(name = "firm_id")
     private Integer firmId;
 
+    @Column(name = "login")
+    private String login;
+
     @Column(name = "name")
     private String name;
 
