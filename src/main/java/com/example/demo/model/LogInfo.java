@@ -1,11 +1,10 @@
 package com.example.demo.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
+@Table(name = "log_info")
 @Entity
 public class LogInfo {
 
@@ -45,6 +44,8 @@ public class LogInfo {
     public Date getCreateTime() { return createTime; }
     public void setCreateTime(Date createTime) { this.createTime = createTime; }
 
+    public LogInfo() { super(); }
+
     /*
      * Entity Basics
      */
@@ -56,11 +57,20 @@ public class LogInfo {
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (this.getClass() == null || this.getClass() != obj.getClass()) {
+            return false;
+        }
+
+        LogInfo logInfo = (LogInfo) obj;
+        return Objects.equals(id, logInfo.getId());
+
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return "{" +
+                "log=" + log +
+                ",createTime" + createTime +
+                "}";
     }
 }

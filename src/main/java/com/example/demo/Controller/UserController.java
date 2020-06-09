@@ -2,7 +2,6 @@ package com.example.demo.Controller;
 
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
-import com.sun.deploy.net.HttpResponse;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,7 +35,7 @@ public class UserController {
         String password = getPassword(params);
         User user = userService.findByLogin(login);
         if (user == null || !user.getPassword().equals(password)) {
-            return "1";
+            return "";
         }
         return user.toString();
     }
