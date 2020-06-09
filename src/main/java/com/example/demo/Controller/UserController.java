@@ -1,7 +1,9 @@
 package com.example.demo.Controller;
 
+import com.example.demo.model.LoginRequest;
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
+import com.google.gson.Gson;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,10 +32,14 @@ public class UserController {
 
     @PostMapping("/login")
     public String login(@RequestBody String params) {
+        Gson gson = new Gson();
         startIte = 14;
-        String login = getUsername(params);
-        String password = getPassword(params);
+        LoginRequest loginRequest = gson.fromJson(params, LoginRequest.class);
+        String login = loginRequest.getUsername();
+        String password = loginRequest.getPassword();
+        System.out.println(login + " " + password);
         User user = userService.findByLogin(login);
+        System.out.println(user.toString());
         if (user == null || !user.getPassword().equals(password)) {
             return "";
         }
