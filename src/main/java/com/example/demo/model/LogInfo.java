@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
@@ -68,9 +69,10 @@ public class LogInfo {
 
     @Override
     public String toString() {
-        return "{" +
-                "log=" + log +
-                ",createTime" + createTime +
+        SimpleDateFormat changeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String createTimeStr = changeFormat.format(createTime);
+        return "{" + log +
+                "," + createTimeStr +
                 "}";
     }
 }
