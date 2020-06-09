@@ -13,7 +13,6 @@ public class UserService {
     @Autowired
     private final UserReposiroty userReposiroty;
 
-
     public UserService(UserReposiroty userReposiroty) {
         this.userReposiroty = userReposiroty;
     }
@@ -30,5 +29,7 @@ public class UserService {
         return userReposiroty.findById(id).orElse(null);
     }
 
-
+    public User findByLogin(String login) {
+        return userReposiroty.findByLogin(login);
+    }
 }

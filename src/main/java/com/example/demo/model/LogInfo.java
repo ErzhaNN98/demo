@@ -9,6 +9,12 @@ import java.util.Date;
 @Entity
 public class LogInfo {
 
+    public LogInfo(Integer userId, String log, Date createTime) {
+        this.userId = userId;
+        this.log = log;
+        this.createTime = createTime;
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "id")

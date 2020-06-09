@@ -23,6 +23,9 @@ public class User {
     @Column(name = "login")
     private String login;
 
+    @Column(name = "password")
+    private String password;
+
     @Column(name = "name")
     private String name;
 
@@ -57,6 +60,12 @@ public class User {
     public Position getPosition() { return position; }
     public void setPosition(Position position) { this.position = position; }
 
+    public String getLogin() { return login; }
+    public void setLogin(String login) { this.login = login; }
+
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+
     public User() {
         super();
     }
@@ -81,25 +90,13 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "{" +
                 "id=" + id +
-                "firmId=" + firmId +
-                "name=" + name +
-                "surname=" + surname +
-                "position=" + position;
+                ",login=" + login +
+                ",password=" + password +
+                ",name=" + name +
+                ",surname=" + surname +
+                ",phone=" + phone +
+                "}";
     }
 }
-
-/*
-* spring:
-    datasource:
-        driverClassName: org.postgresql.Driver
-        url: jdbc:postgresql://localhost:5432/diploma
-        username: diploma
-        password:
-    jpa:
-        hibernate.ddl-auto: update
-        generate-ddl: true
-        show-sql: true
-
- */
