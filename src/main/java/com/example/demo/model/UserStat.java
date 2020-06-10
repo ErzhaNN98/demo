@@ -2,7 +2,7 @@ package com.example.demo.model;
 
 import javax.persistence.*;
 
-//@Table(name = "user_stat")
+@Table(name = "user_stat")
 @Entity
 public class UserStat {
 
