@@ -20,9 +20,9 @@ public class UserStatController {
         UserStat userStat = userStatService.findByUserId(userStatRequest.getUserId());
         if (userStat == null) {
             userStat = new UserStat();
-            userStat.setUserId(userStatRequest.getUserId());
-            userStat.setSuccess(userStatRequest.getIsSuccess());
         }
+        userStat.setUserId(userStatRequest.getUserId());
+        userStat.setSuccess(userStatRequest.getIsSuccess());
         userStatService.create(userStat);
     }
 
@@ -30,8 +30,11 @@ public class UserStatController {
     public String check(@RequestBody String userIdStr) {
         Integer userId = Integer.parseInt(userIdStr);
         UserStat userStat = userStatService.findByUserId(userId);
-        if (userStat == null || !userStat.getSuccess()) {
+        if (userStat == null || userStat.getSuccess() == null) {
             return "";
+        }
+        if (!userStat.getSuccess()) {
+            return "Fail";
         }
         return "Success";
     }
