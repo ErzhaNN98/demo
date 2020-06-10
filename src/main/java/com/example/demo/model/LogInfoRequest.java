@@ -1,18 +1,19 @@
 package com.example.demo.model;
 
-public class UserStatRequest {
+public class LogInfoRequest {
 
     private Integer userId;
-    private Boolean isSuccess;
+    private String log;
 
     /*
      * Getters & Setters
      */
+
     public Integer getUserId() { return userId; }
     public void setUserId(Integer userId) { this.userId = userId; }
 
-    public Boolean getIsSuccess() { return isSuccess; }
-    public void setIsSuccess(Boolean isSuccess) { this.isSuccess = isSuccess; }
+    public String getLog() { return log; }
+    public void setLog(String log) { this.log = log; }
 
     /*
      * Entity Basics
@@ -32,4 +33,5 @@ public class UserStatRequest {
     public String toString() {
         return super.toString();
     }
+
 }

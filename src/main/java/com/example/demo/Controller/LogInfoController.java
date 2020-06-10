@@ -1,7 +1,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.model.LogInfo;
-import com.example.demo.model.UserStatRequest;
+import com.example.demo.model.LogInfoRequest;
 import com.example.demo.service.LogInfoService;
 import com.google.gson.Gson;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +20,7 @@ public class LogInfoController {
     @PostMapping("/create")
     public String create(@RequestBody String params){
         Gson gson = new Gson();
-        UserStatRequest userStatRequest = gson.fromJson(params, UserStatRequest.class);
+        LogInfoRequest userStatRequest = gson.fromJson(params, LogInfoRequest.class);
         System.out.println(userStatRequest.getUserId() + " " + userStatRequest.getLog());
         LogInfo logInfo = new LogInfo(userStatRequest.getUserId(), userStatRequest.getLog(), new Date());
         logInfoService.create(logInfo);
