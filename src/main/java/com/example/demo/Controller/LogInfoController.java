@@ -1,7 +1,9 @@
 package com.example.demo.Controller;
 
 import com.example.demo.model.LogInfo;
+import com.example.demo.model.UserStatRequest;
 import com.example.demo.service.LogInfoService;
+import com.google.gson.Gson;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -16,8 +18,11 @@ public class LogInfoController {
     public LogInfoController(LogInfoService logInfoService) { this.logInfoService = logInfoService; }
 
     @PostMapping("/create")
-    public String create(@RequestBody String userId){
-        LogInfo logInfo = new LogInfo(Integer.parseInt(userId), "Success", new Date());
+    public String create(@RequestBody String params){
+        Gson gson = new Gson();
+        UserStatRequest userStatRequest = gson.fromJson(params, UserStatRequest.class);
+        System.out.println(userStatRequest.getUserId() + " " + userStatRequest.getLog());
+        LogInfo logInfo = new LogInfo(userStatRequest.getUserId(), userStatRequest.getLog(), new Date());
         logInfoService.create(logInfo);
         return logInfo.toString();
     }

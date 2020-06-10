@@ -1,34 +1,19 @@
 package com.example.demo.model;
 
-import javax.persistence.*;
+public class UserStatRequest {
 
-//@Table(name = "user_stat")
-@Entity
-public class UserStat {
-
-    @Id
-    @GeneratedValue
-    @Column(name = "id")
-    private Integer id;
-
-    @Column(name = "user_id")
     private Integer userId;
-
-    @Column(name = "is_success")
-    private Boolean isSuccess;
+    private String log;
 
     /*
      * Getters & Setters
      */
 
-    public Integer getId() { return id; }
-    public void setId(Integer id) { this.id = id; }
-
     public Integer getUserId() { return userId; }
     public void setUserId(Integer userId) { this.userId = userId; }
 
-    public Boolean getSuccess() { return isSuccess; }
-    public void setSuccess(Boolean success) { isSuccess = success; }
+    public String getLog() { return log; }
+    public void setLog(String log) { this.log = log; }
 
     /*
      * Entity Basics
@@ -48,4 +33,5 @@ public class UserStat {
     public String toString() {
         return super.toString();
     }
+
 }
